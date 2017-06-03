@@ -11,22 +11,31 @@ public class RectangleIntersect {
 			for (int j=i+1;j<size;j++) {
 				System.out.println(" Do Intersect :"+rectangles[i].toString()
 					+" and "+rectangles[j].toString()+" "
-					+doIntersect(rectangles[i],rectangles[j]));
+					+doIntersect(rectangles[i],rectangles[j]).toString());
 			}
 		}
 	}
 
-	static boolean doIntersect(Rectangle rect1, Rectangle rect2) {
+	static Rectangle intersectingRectangle(Rectangle rect1, Rectangle rect2) {
+		int x = Math.max(rect1.x,rect2.x);
+		int y = Math.min(rect1.y,rect2.y);
+		int width = Math.max(rect1.x+rect1.width,rect2.x+rect2.width)-x;
+		int height=Math.max(rect1.y+rect1.height,rect2.y+rect2.width)-y;
+		return new Rectangle(x,y,height,width);
+	}
+
+	static Rectangle doIntersect(Rectangle rect1, Rectangle rect2) {
 		if (rect1 == null || rect2 == null)
 			throw new IllegalArgumentException();
 		if ( (rect2.x >= rect1.x && rect2.x <= rect1.x+rect1.width
 			&& rect2.y >= rect1.y && rect2.y <= rect1.y+rect1.height) ||
 			(rect1.x >= rect2.x && rect1.x <= rect2.x+rect2.width
 			&& rect1.y >= rect2.y && rect1.y <= rect2.y+rect2.height)
-			)
-			return true;
+			) {
+			return intersectingRectangle(rect1,rect2);
+		}
 		else
-			return false;
+			return new Rectangle(0,0,-1,-1);
 	}
 	public static void main(String[] argv) {
 		Scanner scanner = new Scanner(System.in);
