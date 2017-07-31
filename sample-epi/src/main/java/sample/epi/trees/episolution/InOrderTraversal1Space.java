@@ -12,7 +12,7 @@ public class InOrderTraversal1Space {
 		TreeNode<Integer> node = root;
 		while (node != null) {
 			if (node.left != null) {
-				node = node.left;		
+					node = node.left;		
 			}
 		
 
