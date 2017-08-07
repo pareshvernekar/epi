@@ -32,10 +32,12 @@ public class ListNode<T extends Comparable<T>> {
 
 
 		while (temp != null) {
-			if (strBuilder.length() == 0) {
-				strBuilder.append(temp.data.toString());
-			} else {
-				strBuilder.append(",").append(temp.data.toString());
+			if (temp.data != null) {
+				if (strBuilder.length() == 0) {
+					strBuilder.append(temp.data.toString());
+				} else {
+					strBuilder.append(",").append(temp.data.toString());
+				}
 			}
 			temp = temp.next;
 		}
