@@ -5,8 +5,8 @@ import java.lang.reflect.*;
 public class ListNode<T extends Comparable<T>> {
 
 
-	T data;
-	ListNode<T> next;
+	public T data;
+	public ListNode<T> next;
 
 	public ListNode(T data, ListNode<T> next) {
 		this.data = data;
